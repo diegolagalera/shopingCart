@@ -1,28 +1,41 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar app color="grey" dark class="appbar" elevation="16">
+      <div class="d-flex align-center">
+        <h1>{{ title }}</h1>
+      </div>
+      <v-spacer></v-spacer>
+      <v-btn href="#" text>
+        <span class="mr-2">{{ $t('HOME') }}</span>
+        <v-icon>mdi-home</v-icon>
+      </v-btn>
+    </v-app-bar>
+    <v-main class="mainbody">
+      <router-view />
+    </v-main>
+    <snack-bar></snack-bar>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SnackBar from './components/snackBar/snackBar.vue';
 
 export default {
+  components: { SnackBar },
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+
+  data: () => ({
+    title: 'shoping cart'
+  }),
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.mainbody {
+  background-color: rgb(207, 201, 201);
+}
+.appbar {
+  background-image: url(https://wallpaperaccess.com/full/1567665.png);
+  background-size: cover;
 }
 </style>
